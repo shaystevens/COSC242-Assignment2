@@ -3,8 +3,8 @@
 #include "mylib.h"
 #include "tree.h"
 
-void print_key(char *str){
-    printf("%s\n", str);
+static void print_info(int freq, char *word) {
+    printf("%-4d %s\n", freq, word);
 }
 
 int main(void) {
@@ -30,7 +30,7 @@ int main(void) {
      /*printf("rbt_inorder:\n");
        rbt_inorder(b, print_key);*/
     printf("tree_preorder:\n");
-    tree_preorder(t, print_key);
+    tree_preorder(t, print_info);
 
     /* printf("deleting 2:\n");
     b = rbt_delete(b, "2");
