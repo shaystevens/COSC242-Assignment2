@@ -52,7 +52,7 @@ tree tree_free(tree t){
     return NULL;
 }
 
-void tree_inorder(tree t, void f(char *str)){
+/*void tree_inorder(tree t, void f(char *str)){
     if (t == NULL){
         return;
     } else {
@@ -61,7 +61,7 @@ void tree_inorder(tree t, void f(char *str)){
         tree_inorder(t->right, f);
         return;
     }
-}
+    }*/
 
 static tree left_rotate(tree t){
     tree temp;
@@ -137,11 +137,13 @@ static tree tree_fix(tree t){
 tree tree_insert(tree t, char *str){
     
     if (t == NULL){
-        t = emalloc(sizeof *r);
+        t = emalloc(sizeof *t);
         t->key = emalloc((strlen(str) + 1) * sizeof *str);
-        t->left = tree_new();
-        t->right = tree_new();
-        t->colour = RED;
+        t->left = tree_new(tree_type);
+        t->right = tree_new(tree_type);
+        if (tree_type == RBT){
+            t->colour = RED;
+        }
         strcpy(t->key, str);
         return t;
     } else {
@@ -150,11 +152,15 @@ tree tree_insert(tree t, char *str){
         } else {
             if (strcmp(t->key, str) > 0){ /* key to be inserted is smaller */
                 t->left = tree_insert(t->left, str);
-                t = tree_fix(t);
+                if (tree_type == RBT){
+                    t = tree_fix(t);
+                }
                 return t;
             } else {
                 t->right = tree_insert(t->right, str);
-                t = tree_fix(t);
+                if (tree_type == RBT){
+                    t = tree_fix(t);
+                }
                 return t;
             }
         }
@@ -165,10 +171,12 @@ void tree_preorder(tree t, void f(char *str)){
     if (t == NULL){
         return;
     } else {
-        if (IS_RED(t)){
-            printf("red: ");
-        } else {
-            printf("black: ");
+        if (tree_type == RBT){
+            if (IS_RED(t)){
+                printf("red: ");
+            } else {
+                printf("black: ");
+            }
         }
         f(t->key);
         tree_preorder(t->left, f);
@@ -176,7 +184,9 @@ void tree_preorder(tree t, void f(char *str)){
     }
 }
 
+int tree_depth(tree t){
 
+}
 
 
 

@@ -8,7 +8,7 @@ void print_key(char *str){
 }
 
 int main(void) {
-    tree t = tree_new();
+    tree t = tree_new(BST);
     char word[256];
     char op;
 
@@ -30,7 +30,7 @@ int main(void) {
      /*printf("rbt_inorder:\n");
        rbt_inorder(b, print_key);*/
     printf("tree_preorder:\n");
-    rbt_preorder(t, print_key);
+    tree_preorder(t, print_key);
 
     /* printf("deleting 2:\n");
     b = rbt_delete(b, "2");
