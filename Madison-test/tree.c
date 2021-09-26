@@ -7,6 +7,11 @@
 #define IS_BLACK(x) ((NULL == (x)) || (BLACK == (x)->colour))
 #define IS_RED(x) ((NULL != (x)) && (RED == (x)->colour))
 
+/* THINGS TO DO IN THE TREE.C FILE 
+   - TRY THE OUTPUT DOT FUNCTIONS
+   - MAKE ROOT NODE ALWAYS BLACK EVEN AFTER FIX UP
+ */
+   
 
 typedef enum { RED, BLACK } tree_colour;
 static type_t tree_type;
@@ -235,8 +240,23 @@ void tree_preorder(tree t, void f(int freq, char *str)){
 }
 
 int tree_depth(tree t){
+    int max_count = 0;
+    int left_depth = -1;
+    int right_depth = -1;
     if (t == NULL){
-        return 0;
+        return -1;
+    } else {
+        if (t->left == NULL && t->right == NULL){
+            return 0;
+        } else {
+            left_depth = tree_depth(t->left);
+            right_depth = tree_depth(t->right);
+            if (left_depth > right_depth){
+                return max_count = left_depth + 1; 
+            } else {
+                return max_count = right_depth + 1;
+            }
+        }
     }
 }
 

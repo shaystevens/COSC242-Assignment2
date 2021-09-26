@@ -32,6 +32,9 @@ int main(void) {
     printf("tree_preorder:\n");
     tree_preorder(t, print_info);
 
+    printf("tree depth\n");
+    printf("%d", tree_depth(t));
+
     /* printf("deleting 2:\n");
     b = rbt_delete(b, "2");
     printf("rbt_inorder:\n");
