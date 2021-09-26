@@ -9,12 +9,13 @@
 
 /* THINGS TO DO IN THE TREE.C FILE 
    - TRY THE OUTPUT DOT FUNCTIONS
-   - MAKE ROOT NODE ALWAYS BLACK EVEN AFTER FIX UP
+   - root node black done, though need to test with output dot function
  */
    
 
 typedef enum { RED, BLACK } tree_colour;
 static type_t tree_type;
+static tree root_node;
 
 struct tree_node {
     char *key;
@@ -182,6 +183,9 @@ static tree tree_fix(tree t){
             t->left->colour = RED;
         }
     }
+    if (t == root_node){
+        t->colour = BLACK;
+    }
     return t;
 }
 
@@ -198,6 +202,7 @@ tree tree_insert(tree t, char *str){
         }
         strcpy(t->key, str);
         t->frequency++;
+        root_node = t;
         return t;
     } else {
         if (strcmp(t->key, str) == 0){ /* the same */
