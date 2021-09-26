@@ -15,6 +15,7 @@
 
 typedef enum { RED, BLACK } tree_colour;
 static type_t tree_type;
+static int no_insertion_calls = 0;
 static tree root_node;
 
 struct tree_node {
@@ -202,7 +203,10 @@ tree tree_insert(tree t, char *str){
         }
         strcpy(t->key, str);
         t->frequency++;
-        root_node = t;
+        if (no_insertion_calls == 0){
+            root_node = t;
+            no_insertion_calls++;
+        }
         return t;
     } else {
         if (strcmp(t->key, str) == 0){ /* the same */
