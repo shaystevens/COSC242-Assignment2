@@ -76,7 +76,6 @@ int main(int argc, char **argv){
     tree_type = BST;
     tree t;
 
-
     /* Working with the command line through the C language getopt libary function  */
     while ((option = getopt(argc, argv, optstring)) != EOF) {
         switch (option) {
@@ -122,7 +121,7 @@ int main(int argc, char **argv){
     /* -d argument */
     if(print_depth_flag == 1){
         this_tree_depth = tree_depth(t);
-        printf("Depth of tree is: %d\n", this_tree_depth);
+        printf("%d\n", this_tree_depth);
     }
 
     /* -f argument */
