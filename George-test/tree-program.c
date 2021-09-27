@@ -60,7 +60,7 @@ int main(int argc, char **argv){
 			printf("--Here is a help guide-- \n");
 			printf("--------------------------------------------------------------------------------------------------\n");
 			printf("Please use command line arguments to operate program: \n");
-			printf("Syntax for usage: ./asgn1 [OPTION]... <STDIN> \n \n");
+			printf("Syntax for usage: ./asgn2 [OPTION]... <STDIN> \n \n");
             printf("-c FILENAME  checks spelling of words in file while printing timing and unknown information \n");
             printf("             this function cannot be used alongisde other arguments. \n");
 			printf("-d           strictly prints the depth of the tree. \n");
