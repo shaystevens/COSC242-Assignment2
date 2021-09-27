@@ -13,7 +13,6 @@ static void print_info(int freq, char *word) {
 int main(int argc, char **argv){
     /*Initialising and declearing variables */
     const char *optstring = "dorh:f:c";
-    char namedotfile = "tree-view.dot";
     FILE *filename;
     FILE *dotfile;
     FILE *unique_dotfile;
