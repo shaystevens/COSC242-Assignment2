@@ -58,17 +58,17 @@ int main(int argc, char **argv){
 
 			case 'h' :
 			printf("--Here is a help guide-- \n");
-			printf("------------------------------------------------------------------------------------------------\n");
+			printf("--------------------------------------------------------------------------------------------------\n");
 			printf("Please use command line arguments to operate program: \n");
 			printf("Syntax for usage: ./asgn1 [OPTION]... <STDIN> \n \n");
             printf("-c FILENAME  checks spelling of words in file while printing timing and unknown information \n");
-            printf("             this function cannot be used alongisde other arguments \n");
-			printf("-d           strictly prints the depth of the tree to stdout \n");
-			printf("-f FILENAME  write the dot output to file name instead of the default filename if -o is given \n");
+            printf("             this function cannot be used alongisde other arguments. \n");
+			printf("-d           strictly prints the depth of the tree. \n");
+			printf("-f FILENAME  write the dot output to file name instead of the default filename if -o is given. \n");
             printf("-o           outputs a representation of the tree in dot form to the file 'tree-view.dot' \n");
-			printf("-r           make the data structure a red black tree instead of a binary search tree\n");
-			printf("-h           displays this message \n");
-			printf("----------------------------------------------------------------------------------------------\n");
+			printf("-r           make the data structure a red black tree instead of a binary search tree. \n");
+			printf("-h           displays this message. \n");
+			printf("--------------------------------------------------------------------------------------------------\n");
 			exit(0);
 			break;
 
