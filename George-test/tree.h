@@ -13,6 +13,6 @@ extern void tree_preorder(tree t, void f(int freq, char *str));
 extern int tree_search(tree t, char *str);
 extern int tree_depth(tree t);
 extern void tree_output_dot(tree t, FILE *out);
-extern void tree_output_dot_aux(tree t, FILE *out);
+
 
 #endif
