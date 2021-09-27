@@ -95,6 +95,7 @@ if(print_depth_flag == 1){
 if(dot_out_filename == 1 && output == 1){
     tree_output_dot_aux(t, unique_dotfile);
     tree_output_dot(t, unique_dotfile);
+    fclose(unique_dotfile);
 }
 /* -o argument */
 else if(output == 1 && dot_out_filename == 0){
