@@ -6,7 +6,7 @@
 #include "mylib.h"
 #include "tree.h"
 
-static void help_message(int x, char *optarg){
+static void help_message(int x){
     if(x == 0){
         fprintf(stdout, "Usage: ./asgn2 [OPTION]... <STDIN>\n\n");
         fprintf(stdout, "Perform various operations using a binary tree.  "
@@ -15,41 +15,42 @@ static void help_message(int x, char *optarg){
                 " being printed out\n");
         fprintf(stdout, "alongside their frequencies to stdout.\n\n");
         fprintf(stdout, " -c FILENAME  Check spelling of words in FILENAME"
-                "using words\n");
+                " using words\n");
         fprintf(stdout, "              read from stdin as the dictionary."
                 "  Print timing\n");
+        fprintf(stdout, "              info & unknown words to stderr "
+                "(ignore -d & -o)\n");
         fprintf(stdout, " -d           Only print the tree depth"
                 " (ignore -o)\n");
         fprintf(stdout, " -f FILENAME  Write DOT output to FILENAME (if -o "
                 "given)\n");
-        fprintf(stdout, " -o           outputs a representation of the tree"
-                " in dot form to the file 'tree-view.dot' \n");
+        fprintf(stdout, " -o           Output the tree in DOT form to file"
+                " 'tree-view.dot' \n");
         fprintf(stdout, " -r           Make the tree an RBT (the default"
                 " is a BST)\n\n");
-        fprintf(stdout, " -h           print this message.\n\n");
+        fprintf(stdout, " -h           Print this message\n\n");
     }else{
-        fprintf(stderr, "./asgn2: inavlid option -- '%s'\n", optarg);
         fprintf(stderr, "Usage: ./asgn2 [OPTION]... <STDIN>\n\n");
         fprintf(stderr, "Perform various operations using a binary tree.  "
                 "By default, words\n");
-        fprintf(stderr, "are read from stdin and added to the tree, "
-                "before being printed out\n");
+        fprintf(stderr, "are read from stdin and added to the tree, before"
+                " being printed out\n");
         fprintf(stderr, "alongside their frequencies to stdout.\n\n");
-        fprintf(stderr, " -c FILENAME  Check spelling of words in "
-                "FILENAME using words\n");
-        fprintf(stderr, "              read from stdin as the dictionary.  "
-                "Print timing\n");
-        fprintf(stderr, "              info & unknown words to stderr"
-                " (ignore -d & -o)\n");
-        fprintf(stderr, " -d           Only print the tree depth "
-                "(ignore -o)\n");
-        fprintf(stderr, " -f FILENAME  Write DOT output to FILENAME "
-                "(if -o given)\n");
-        fprintf(stderr, " -o           outputs a representation of the tree "
-                "in dot form to the file 'tree-view.dot' \n");
-        fprintf(stderr, " -r           Make the tree an RBT (the default "
-                "is a BST)\n\n");
-        fprintf(stderr, " -h           print this message.\n\n");
+        fprintf(stderr, " -c FILENAME  Check spelling of words in FILENAME"
+                " using words\n");
+        fprintf(stderr, "              read from stdin as the dictionary."
+                "  Print timing\n");
+        fprintf(stderr, "              info & unknown words to stderr "
+                "(ignore -d & -o)\n");
+        fprintf(stderr, " -d           Only print the tree depth"
+                " (ignore -o)\n");
+        fprintf(stderr, " -f FILENAME  Write DOT output to FILENAME (if -o "
+                "given)\n");
+        fprintf(stderr, " -o           Output the tree in DOT form to file"
+                " 'tree-view.dot' \n");
+        fprintf(stderr, " -r           Make the tree an RBT (the default"
+                " is a BST)\n\n");
+        fprintf(stderr, " -h           Print this message\n\n");
     } 
 }
 
@@ -60,7 +61,7 @@ int main(int argc, char **argv){
     clock_t fillStart, fillEnd, searchStart, searchEnd;
     double fillTime, searchTime;
     char word[256];
-    const char *optstring = "dorh:f:c";
+    const char *optstring = "dorhf:c:";
     FILE *filename;
     FILE *dotfile;
     FILE *unique_dotfile;
@@ -101,12 +102,12 @@ int main(int argc, char **argv){
                 break;
 
             case 'h' :
-                help_message(0, "");
+                help_message(0);
                 return EXIT_SUCCESS;
                 break;
 
             default :
-                help_message(1, optarg);
+                help_message(1);
                 return EXIT_FAILURE;
                 break;
         }
