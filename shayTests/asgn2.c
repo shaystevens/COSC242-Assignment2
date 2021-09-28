@@ -107,14 +107,44 @@ int main(int argc, char **argv){
                 break;
 
             default :
-                help_message(1);
+                help_message(1, optarg);
                 return EXIT_FAILURE;
                 break;
         }
     }
 
-    if(check_file == 1 && print_depth_flag == 0 && output == 0){
-        /* check spelling of words in filename ....*/
+    /* -c argument */
+    if(check_file == 1){
+        int unknown_words;
+        clock_t fillStart, fillEnd, searchStart, searchEnd;
+        double fillTime, searchTime;
+        char word[256];
+        
+        fillStart = clock();
+        /*fill work*/
+        while (getword(word, sizeof word, stdin) != EOF){
+            tree_insert(t, word);
+        }
+        fillEnd = clock();
+
+        searchStart = clock();
+        /*search work*/
+        while (getword(word, sizeof word, filename) != EOF){
+            if(tree_search(t, word) != 1){
+                unknown_words++;
+                printf("%s\n", word);
+            }
+        }
+        searchEnd = clock();
+
+        fillTime = ((double) (fillEnd -  fillStart))/CLOCKS_PER_SEC;
+        searchTime = ((double) (searchEnd - searchStart))/CLOCKS_PER_SEC;
+        fprintf(stderr, "Fill time     : %f\n", fillTime);
+        fprintf(stderr, "Search time   : %f\n", searchTime);
+        fprintf(stderr, "Unknown words = %d\n", unknown_words);
+
+        tree_free(t);
+        return EXIT_SUCCESS;
     }
 
 
