@@ -89,8 +89,11 @@ int main(int argc, char **argv){
                 break;
 
             case'f':
+                if(NULL == (unique_dotfile = fopen(optarg, "w"))){
+                    return EXIT_FAILURE;
+                }
                 dot_out_filename = 1;
-                unique_dotfile = fopen(optarg, "w"); 
+                fprintf(stdout, "Creating dot file '%s'\n", optarg);
                 break;
 
             case'o':
@@ -149,10 +152,9 @@ int main(int argc, char **argv){
         this_tree_depth = tree_depth(t);
         printf("%d\n", this_tree_depth);
     }
-
+   
     /* -f argument */
     if(dot_out_filename == 1 && output == 1){
-        unique_dotfile = NULL;
         tree_output_dot(t, unique_dotfile);
         fclose(unique_dotfile);
     }
@@ -162,6 +164,7 @@ int main(int argc, char **argv){
         dotfile = fopen("tree-view.dot", "w");
         tree_output_dot(t,dotfile);
         fclose(dotfile);
+        fprintf(stdout, "Creating dot file 'tree-view.dot'\n");
     }
 
     /* deallocation of asigned memory */
