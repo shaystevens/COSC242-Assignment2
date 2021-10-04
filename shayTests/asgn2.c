@@ -6,6 +6,13 @@
 #include "mylib.h"
 #include "tree.h"
 
+/**
+ * Prints out a helpful messsage on what the program does, showing what
+ * arguments you can enter in the command line and what they do.
+ *
+ * @param x - int, to determine if help message called due to -h option given
+ * or because invalid option given.
+ */
 static void help_message(int x){
     if(x == 0){
         fprintf(stdout, "Usage: ./asgn2 [OPTION]... <STDIN>\n\n");
@@ -54,6 +61,15 @@ static void help_message(int x){
     } 
 }
 
+/**
+ * Main part of the program, which reads inputs from stdin and change the
+ * programs output. Creates a tree using tree type (default is a BST).
+ *
+ * @param argc - int, number of arguements.
+ * @param argv - char **, the arguements.
+ *
+ * @return int, EXIT_SUCCESS if program is successful, or EXIT_FAILURE.
+ */
 int main(int argc, char **argv){
     /*Initialising and declearing variables */
     tree t;
@@ -76,7 +92,7 @@ int main(int argc, char **argv){
     static type_t tree_type;
     tree_type = BST;
 
-    /* Working with the command line through the C language getopt libary function  */
+    /* Use getopt to get arguments from the command line */
     while ((option = getopt(argc, argv, optstring)) != EOF) {
         switch (option) {
             case'c':
@@ -127,6 +143,7 @@ int main(int argc, char **argv){
     /* -c argument */
     if(check_file == 1){
         searchStart = clock();
+        
         /*search work*/
         while (getword(word, sizeof word, filename) != EOF){
             if(tree_search(t, word) != 1){
@@ -136,12 +153,14 @@ int main(int argc, char **argv){
         }
         searchEnd = clock();
 
+        /* Print results int a table to stderr */
         fillTime = ((double) (fillEnd -  fillStart))/CLOCKS_PER_SEC;
         searchTime = ((double) (searchEnd - searchStart))/CLOCKS_PER_SEC;
-        fprintf(stderr, "Fill time     : %f\n", fillTime);
-        fprintf(stderr, "Search time   : %f\n", searchTime);
-        fprintf(stderr, "Unknown words = %d\n", unknown_words);
+        fprintf(stdout, "Fill time     : %f\n", fillTime);
+        fprintf(stdout, "Search time   : %f\n", searchTime);
+        fprintf(stdout, "Unknown words = %d\n", unknown_words);
 
+        /* deallocation of assigned memory */
         tree_free(t);
         return EXIT_SUCCESS;
     }
@@ -167,7 +186,7 @@ int main(int argc, char **argv){
         fprintf(stdout, "Creating dot file 'tree-view.dot'\n");
     }
 
-    /* deallocation of asigned memory */
+    /* deallocation of assigned memory */
     tree_free(t);
     return EXIT_SUCCESS;
 }

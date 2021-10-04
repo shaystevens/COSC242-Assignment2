@@ -4,9 +4,16 @@
 #include <stdlib.h> /* for size_t, malloc, realloc, exit */
 #include "mylib.h"
 
+/**
+ * Allocates memory and includes error checking.
+ *
+ * @param s -  type size_t, amount of memory to allocate.
+ *
+ * @return result - indicates successful memory allocation.
+ */
 void *emalloc(size_t s) {
-    /* implementation of emalloc goes here */
     void *result = malloc(s);
+    /* If memory allocation doesn't work print error message and exit */
     if (NULL == result) {
         fprintf(stderr, "Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -14,9 +21,17 @@ void *emalloc(size_t s) {
     return result;
 }
 
+/**
+ * Reallocates memory and includes error checking.
+ *
+ * @param *p - type void
+ * @param s - type size_t amount of memory to reallocate.
+ *
+ * @return result - indicates successful memory allocation.
+ */
 void *erealloc(void *p, size_t s) {
-    /* implementation of erealloc goes here */
     void *result = realloc(p, s);
+    /* If memory reallocation doesn't work print error message and exit */
     if (NULL == result) {
         fprintf(stderr, "memory reallocation failed.\n");
         exit(EXIT_FAILURE);
@@ -24,6 +39,15 @@ void *erealloc(void *p, size_t s) {
     return result;
 }
 
+/**
+ * Gets the word for us from the stream.
+ *
+ * @param s - char*, the word.
+ * @param limit - int.
+ * @param stream - FILE *, location where the words are gathered from.
+ *
+ * @return int, EOF or difference between two string arrays.
+ */
 int getword(char *s, int limit, FILE *stream) {
     int c;
     char *w = s;

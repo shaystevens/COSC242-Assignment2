@@ -18,6 +18,7 @@ static type_t tree_type;
 static int no_insertion_calls = 0;
 static tree root_node;
 
+/* Tree structure */
 struct tree_node {
     char *key;
     tree_colour colour;
@@ -72,11 +73,27 @@ void tree_output_dot(tree t, FILE *out) {
     fprintf(out, "}\n");
 }
 
+/**
+ * Creates a new tree using and uses the parameter to set the
+ * type of tree it is.
+ *
+ * @param tree_version - type_t sets the tree type.
+ *
+ * @return returns NULL.
+ */
 tree tree_new(type_t tree_version){
     tree_type = tree_version;
     return NULL;
 }
 
+/**
+ * Searches the tree for str returns 1 if found or 0 if not.
+ *
+ * @param t - type tree, the tree.
+ * @param str - type char*, the string that is wanted to be found.
+ *
+ * @return int - 1 if string is in tree, 0 if it is not.
+ */
 int tree_search(tree t, char *str){
     if (t == NULL){
         return 0;
@@ -93,6 +110,13 @@ int tree_search(tree t, char *str){
     }
 }
 
+/**
+ * Frees the allocated memory of the tree.
+ *
+ * @param t - type tree, the tree.
+ *
+ * @return returns NULL.
+ */
 tree tree_free(tree t){
     if (t == NULL){
         return NULL;
@@ -116,6 +140,13 @@ tree tree_free(tree t){
     }
     }*/
 
+/**
+ * Rotates the tree by shifting the the root down to the left.
+ *
+ * @param t - type tree, the tree.
+ *
+ * @return returns the tree.
+ */
 static tree left_rotate(tree t){
     tree temp;
 
@@ -128,6 +159,13 @@ static tree left_rotate(tree t){
     
 }
 
+/**
+ * Rotates the tree by shifting the root down the side of the tree.
+ *
+ * @param t - type tree, the tree.
+ *
+ * @return returns the tree.
+ */
 static tree right_rotate(tree t){
     tree temp;
 
@@ -140,6 +178,13 @@ static tree right_rotate(tree t){
     
 }
 
+/**
+ * Fixes the tree if it is breaking RBT rules.
+ *
+ * @param t - type tree, the tree.
+ *
+ * @return returns the fixed tree.
+ */
 static tree tree_fix(tree t){
     if (IS_RED(t->left) && IS_RED(t->left->left)){
         if (IS_RED(t->right)){
@@ -190,6 +235,14 @@ static tree tree_fix(tree t){
     return t;
 }
 
+/**
+ * Inserts string into the tree.
+ *
+ * @param t - type tree, the tree.
+ * @param str - type char*, the string to be inserted into the tree.
+ *
+ * @return returns the string.
+ */
 tree tree_insert(tree t, char *str){
     
     if (t == NULL){
@@ -248,6 +301,13 @@ void tree_preorder(tree t, void f(int freq, char *str)){
     }
 }
 
+/**
+ * Find the depth of the given tree.
+ *
+ * @param t - type tree, the tree.
+ *
+ * @return int - return the depth of the tree.
+ */
 int tree_depth(tree t){
     int max_count = 0;
     int left_depth = -1;
