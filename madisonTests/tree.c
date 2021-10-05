@@ -152,6 +152,9 @@ static tree left_rotate(tree t){
 
     temp = t;
     t = t->right;
+    if (temp == root_node){
+        root_node = t;
+    }
     temp->right = t->left;
     t->left = temp;
 
@@ -171,6 +174,9 @@ static tree right_rotate(tree t){
 
     temp = t;
     t = t->left;
+    if (temp == root_node){
+        root_node = t;
+    }
     temp->left = t->right;
     t->right = temp;
 

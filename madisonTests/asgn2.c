@@ -178,8 +178,6 @@ int main(int argc, char **argv){
         tree_free(t);
         return EXIT_SUCCESS;
     }
-
-
        
     /* -f argument */
     else if(dot_out_filename == 1 && output == 1){
