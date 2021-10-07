@@ -261,7 +261,7 @@ tree tree_insert(tree t, char *str){
             t->colour = RED;
         }
         strcpy(t->key, str);
-        t->frequency++;
+        t->frequency = 1;
         if (no_insertion_calls == 0){
             root_node = t;
             no_insertion_calls++;
