@@ -261,7 +261,7 @@ tree tree_insert(tree t, char *str){
             t->colour = RED;
         }
         strcpy(t->key, str);
-        t->frequency++;
+        t->frequency = 1;
         if (no_insertion_calls == 0){
             root_node = t;
             no_insertion_calls++;
@@ -302,8 +302,12 @@ void tree_preorder(tree t, void f(int freq, char *str)){
             }
             }*/
         f(t->frequency, t->key);
-        tree_preorder(t->left, f);
-        tree_preorder(t->right, f);
+        if (t->left != NULL){
+            tree_preorder(t->left, f);
+        }
+        if (t->right != NULL){
+            tree_preorder(t->right, f);
+        }
     }
 }
 
@@ -334,3 +338,6 @@ int tree_depth(tree t){
         }
     }
 }
+
+
+

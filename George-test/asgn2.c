@@ -82,10 +82,10 @@ int main(int argc, char **argv){
     double fillTime, searchTime;
     char word[256];
     const char *optstring = "dorhf:c:";
-    FILE *filename;
+    FILE *filename = NULL;
     FILE *dotfile;
     FILE *unique_dotfile;
-    char *changed_dotfile_name;
+    char *changed_dotfile_name = "";
     
     int option = 0;
     int print_depth_flag = 0;
@@ -98,43 +98,47 @@ int main(int argc, char **argv){
     /* tree_type = BST;*/
 
     /* Use getopt to get arguments from the command line */
-    while ((option = getopt(argc, argv, optstring)) != EOF) {
-        switch (option) {
-            case'c':
-                check_file = 1;
-                filename = fopen(optarg, "r");
-                break;
+    if (argc > 0){
+        while ((option = getopt(argc, argv, optstring)) != EOF) {
+            switch (option) {
+                case'c':
+                    if(NULL == (filename = fopen(optarg, "r"))){
+                       return EXIT_FAILURE;
+                    }
+                    check_file = 1;
+                    /*filename = fopen(optarg, "r");*/
+                    break;
 
-            case'd': 
-                print_depth_flag = 1;
-                break;
+                case'd': 
+                    print_depth_flag = 1;
+                    break;
 
-            case'f':
-                if(NULL == (unique_dotfile = fopen(optarg, "w"))){
-                    return EXIT_FAILURE;
-                }
-                dot_out_filename = 1;
-                fprintf(stdout, "Creating dot file '%s'\n", optarg);
-                changed_dotfile_name = optarg;
-                break;
+                case'f':
+                    
+                    dot_out_filename = 1;
+                    fprintf(stdout, "Creating dot file '%s'\n", optarg);
+                    changed_dotfile_name = optarg;
+                    /* sscanf(optarg, "%s", changed_dotfile_name);*/
+                    break;
 
-            case'o':
-                output = 1;
-                break;	
+                case'o':
+                    output = 1;
+                    break;	
 
-            case 'r':
-                tree_type = RBT;
-                break;
+                case 'r':
+                    tree_type = RBT;
+                    break;
 
-            case 'h' :
-                help_message(0);
-                return EXIT_SUCCESS;
-                break;
+                case 'h' :
+                    help_message(0);
+                    return EXIT_SUCCESS;
+                    break;
 
-            default :
-                help_message(1);
-                return EXIT_FAILURE;
-                break;
+                default :
+                    help_message(1);
+                    return EXIT_SUCCESS;
+                    break;
+            }
         }
     }
 
@@ -151,7 +155,7 @@ int main(int argc, char **argv){
     /* -d argument */
     if(print_depth_flag == 1){
         this_tree_depth = tree_depth(t);
-        fprintf(stdout, "%d\n", this_tree_depth);
+        fprintf(stdout, "%d", this_tree_depth);
     } 
 
     /* -c argument */
