@@ -113,10 +113,8 @@ int main(int argc, char **argv){
                     print_depth_flag = 1;
                     break;
 
-                case'f':
-                    
+                case'f':                   
                     dot_out_filename = 1;
-                    fprintf(stdout, "Creating dot file '%s'\n", optarg);
                     changed_dotfile_name = optarg;
                     /* sscanf(optarg, "%s", changed_dotfile_name);*/
                     break;
@@ -152,21 +150,15 @@ int main(int argc, char **argv){
 
     /* reordering of if statements */
 
-    /* -d argument */
-    if(print_depth_flag == 1){
-        this_tree_depth = tree_depth(t);
-        fprintf(stdout, "%d", this_tree_depth);
-    } 
-
     /* -c argument */
-    else if(check_file == 1){
+    if(check_file == 1){
         searchStart = clock();
         
         /*search work*/
         while (getword(word, sizeof word, filename) != EOF){
             if(tree_search(t, word) != 1){
                 unknown_words++;
-                printf("%s\n", word);
+                fprintf(stdout, "%s\n", word);
             }
         }
         searchEnd = clock();
@@ -182,19 +174,26 @@ int main(int argc, char **argv){
         tree_free(t);
         return EXIT_SUCCESS;
     }
+
+    /* -d argument */
+    else if(print_depth_flag == 1){
+        this_tree_depth = tree_depth(t);
+        fprintf(stdout, "%d\n", this_tree_depth);
+    } 
        
     /* -f argument */
     else if(dot_out_filename == 1 && output == 1){
         /* try and open the file */
         unique_dotfile = fopen(changed_dotfile_name, "w");
         tree_output_dot(t, unique_dotfile);
+        fprintf(stdout, "Creating dot file '%s'\n", changed_dotfile_name);
         fclose(unique_dotfile);
     }
     
     /* -o argument */
     else if(output == 1 && dot_out_filename == 0){
         dotfile = fopen("tree-view.dot", "w");
-        tree_output_dot(t,dotfile);
+        tree_output_dot(t, dotfile);
         fclose(dotfile);
         fprintf(stdout, "Creating dot file 'tree-view.dot'\n");
     }
