@@ -302,8 +302,12 @@ void tree_preorder(tree t, void f(int freq, char *str)){
             }
             }*/
         f(t->frequency, t->key);
-        tree_preorder(t->left, f);
-        tree_preorder(t->right, f);
+        if (t->left != NULL){
+            tree_preorder(t->left, f);
+        }
+        if (t->right != NULL){
+            tree_preorder(t->right, f);
+        }
     }
 }
 
