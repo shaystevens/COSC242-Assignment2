@@ -166,9 +166,9 @@ int main(int argc, char **argv){
         /* Print results int a table to stderr */
         fillTime = ((double) (fillEnd -  fillStart))/CLOCKS_PER_SEC;
         searchTime = ((double) (searchEnd - searchStart))/CLOCKS_PER_SEC;
-        fprintf(stdout, "Fill time     : %f\n", fillTime);
-        fprintf(stdout, "Search time   : %f\n", searchTime);
-        fprintf(stdout, "Unknown words = %d\n", unknown_words);
+        fprintf(stderr, "Fill time     : %f\n", fillTime);
+        fprintf(stderr, "Search time   : %f\n", searchTime);
+        fprintf(stderr, "Unknown words = %d\n", unknown_words);
 
         /* deallocation of assigned memory */
         tree_free(t);
