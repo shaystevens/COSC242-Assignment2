@@ -24,3 +24,4 @@ different inputs: rbt input (example from lab 15) and war and peace (wap, or sho
 20. -f (no file) -o = good
 21. -c (no file) = good
 22. -c (non existent file) = ???
+23. -d -c filename -o = good
