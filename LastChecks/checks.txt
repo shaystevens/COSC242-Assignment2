@@ -1,0 +1,26 @@
+Checklist of checks
+
+different inputs: rbt input (example from lab 15) and war and peace (wap, or short version)
+
+1. -d with rbt = good
+2. -d with wap = good
+3. -d -r with rbt = good
+4. -d -r with wap = good
+5. -f -o -r with rbt = good
+6. -f -o with wap = good
+7. -f -o -r with wap = good
+8. -h -o = good
+9. -r with rbt = good
+10. with rbt = good
+11. with bst = good
+12. -f 5 = good
+13. -f 5 -o = good
+14. -d -o = good
+15. -s (invalid option) = good
+16. -c rbt = good
+17. -c rbt -d = good
+18. -c rbt -d -o = good
+19. -f (no file) = good
+20. -f (no file) -o = good
+21. -c (no file) = good
+22. -c (non existent file) = ???
