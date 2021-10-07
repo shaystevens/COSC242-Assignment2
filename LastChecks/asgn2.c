@@ -1,3 +1,13 @@
+/**
+ * asgn2.c
+ *
+ * PURPOSE - The main file, uses a tree to perform a number of tasks. By
+ * default, words are read from stdin and added to your tree before being
+ * printed out alongside their frequencies to stdout.
+ *
+ * AUTHORS - Madison Wong, George Churton, Shay Stevens
+ */
+
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdio.h>
