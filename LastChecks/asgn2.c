@@ -1,11 +1,10 @@
 /**
- * asgn2.c
+ * @file asgn2.c
+ * @author Madison Wong, George Churton, Shay Stevens
  *
- * PURPOSE - The main file, uses a tree to perform a number of tasks. By
+ * PURPOSE - asgn2, the main file, uses a tree to perform a number of tasks. By
  * default, words are read from stdin and added to your tree before being
  * printed out alongside their frequencies to stdout.
- *
- * AUTHORS - Madison Wong, George Churton, Shay Stevens
  */
 
 #include <getopt.h>
