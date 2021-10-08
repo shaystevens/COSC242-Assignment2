@@ -1,11 +1,3 @@
-/**
-* @file tree.c
-* @author Madison Wong, George Churton, Shay Stevens.
-* 
-* PURPOSE- tree.c holds the methods used to implement abstract data as trees.
-* a tree can be an BST or a balanced RBT.  
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
