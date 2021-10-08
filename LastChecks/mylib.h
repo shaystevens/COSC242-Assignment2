@@ -1,8 +1,8 @@
 /**
  * mylib.h
  * @author Madison Wong, George Churton, Shay Stevens.
- * PURPOSE - This file holds the headers for the mylib file.
- * All functions in mylib.c are delceared within this file.
+ * PURPOSE - This mylib.h file contains the function prototypes for
+ * mylib.c as well as the headers for the mylib program.
  */
 
 #ifndef MYLIB_H_
