@@ -1,10 +1,9 @@
 /**
- * tree.c
+ * @file tree.c
+ * @author Madison Wong, George Churton, Shay Stevens
  *
  * PURPOSE - Creates tree data structure based on binary search tree or
  * red-black tree. Performs manipulations to the tree data structure.
- *
- * AUTHORS - Madison Wong, George Churton, Shay Stevens 
  */
 
 #include <stdio.h>
