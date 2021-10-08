@@ -6,7 +6,6 @@
 * the file also defines the struct of tree.
 */
 
-
 #ifndef TREE_H_
 #define TREE_H_
 
