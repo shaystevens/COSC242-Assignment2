@@ -1,3 +1,10 @@
+/**
+ * @file mylib.c
+ * @author Madison Wong, George Churton, Shay Stevens.
+ * PURPOSE - This file implements the paramaters and statements set in mylib.h.
+ */
+
+
 #include <assert.h>
 #include <ctype.h>
 #include <stdio.h> /* for fprintf */
