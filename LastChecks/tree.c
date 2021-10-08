@@ -289,6 +289,11 @@ tree tree_insert(tree t, char *str){
     }
 }
 
+/**
+ * Tree preorder prints a copy of the tree.
+ * @param t - The tree.
+ * @param f - function used to print tree.
+ */
 void tree_preorder(tree t, void f(int freq, char *str)){
     if (t == NULL){
         return;
