@@ -1,5 +1,5 @@
 /**
- * mylib.h
+ * @file mylib.h
  * @author Madison Wong, George Churton, Shay Stevens.
  * PURPOSE - This mylib.h file contains the function prototypes for
  * mylib.c as well as the headers for the mylib program.
