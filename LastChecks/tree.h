@@ -1,3 +1,12 @@
+/**
+* @file tree.h
+* @author Madison Wong, George Churton, Shay Stevens.
+* 
+* PURPOSE- tree.h holds function prototypes as well as the headers for the tree program.
+* the file also defines the struct of tree.
+*/
+
+
 #ifndef TREE_H_
 #define TREE_H_
 
