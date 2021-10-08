@@ -120,7 +120,8 @@ int main(int argc, char **argv){
             switch (option) {
                 case 'c':
                     if(NULL == (filename = fopen(optarg, "r"))){
-                       return EXIT_FAILURE;
+                        fprintf(stderr, "Can't open file '%s' using mode r.\n", optarg);
+                        return EXIT_FAILURE;
                     }
                     check_file = 1;
                     break;
